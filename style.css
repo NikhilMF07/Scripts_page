@@ -655,6 +655,20 @@ nav ul li a.active {
     .content .sections-content textarea {
         font-size: 12px;
     }
+    .menu .logo-text {
+        font-size: 14px;
+    }
+    .menu .logo img {
+        width: 40px;
+    }
+    .profile-section {
+        width: 50%;
+        font-size: 14px;
+    }
+    .menu {
+        gap: 40px;
+        padding: 0 25px;
+    }
 }
 
 @media (max-width: 576px) {
