@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hidden {
+        display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" list="Partylist" id="PartyName" oninput="PartyNameRex()">
+  <datalist id="Partylist">
+    <option value="ABC Company">
+    <option value="XYZ Company">
+    <option value="MNC Company">x
+  </datalist><br><br>
+  <input type="text">
+
+    <div class="search-input d-flex px-5" id="search-input">
+        <input type="text" name="search" id="searchInput" placeholder="Search..." oninput="searchMenu()">
+    </div>
+    <ul id="menuList">
+        <li class="active" data-search="master script">
+            <a href="#" onclick="showContent('master-Script')" data-target="master-Script">
+                <span>Master Script</span>
+            </a>
+        </li>
+        <li class="" data-search="make copy of spreadsheet">
+            <a href="#" onclick="showContent('make-Copy-of-Spreadsheet')" data-target="make-Copy-of-Spreadsheet">
+                <span>Make Copy of Spreadsheet</span>
+            </a>
+        </li>
+    </ul>
+  <script>
+
+    function PartyNameRex() {
+      var pt = document.querySelector('#PartyName');
+      var partyName = pt.value;
+      var options = document.querySelectorAll('#Partylist option');
+      for(let i = 0; i<options.length;i++){
+        var name = options[i].value.toLowerCase();
+        if(name==partyName.toLowerCase()){
+          pt.value = options[i].value;
+          pt.style.color = 'green';
+          break;
+        }else{
+          pt.style.color = 'red';
+        }
+      }
+    }
+
+    function searchMenu() {
+        var searchInput = document.getElementById('searchInput');
+        var searchTerm = searchInput.value.toLowerCase();
+        var menuItems = document.querySelectorAll('#menuList li');
+        
+        menuItems.forEach(function(item) {
+            var searchData = item.getAttribute('data-search');
+            var itemText = item.textContent.toLowerCase();
+            
+            // Check if search term matches either data-search attribute or visible text
+            if ((searchData && searchData.includes(searchTerm)) || itemText.includes(searchTerm)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+        
+        // If search is empty, show all items
+        if (searchTerm === '') {
+            menuItems.forEach(function(item) {
+                item.classList.remove('hidden');
+            });
+        }
+    }
+  </script>
+</body>
+
+</html>

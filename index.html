@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+
+    <div id="menu" class="menu" style="display: none;">
+        <li class="d-flex">
+            <span class="logo"><img src="logo-2.png" alt=""></span>
+            <span class="logo-text">Maruti Flex Traders LLP</span>
+        </li>
+        <div class="profile-section d-flex align-items-center gap-2"
+            role="button"
+            tabindex="0"
+            id="profilePopover"
+            data-bs-toggle="popover"
+            data-bs-html="true"
+            data-bs-placement="bottom"
+            data-bs-custom-class="custom-popover"
+            data-bs-title="User Profile"
+            data-bs-content='
+                <div style="min-width: 200px;">
+                    <strong>Name :</strong> Nikhil K K <br>
+                    <strong>Employee ID :</strong> 1524 <br><br>
+                    <strong>Role :</strong> Developer <br><br>
+                    <p class="btn btn-sm btn-danger ></p>
+                    <button class="btn btn-sm btn-danger w-100">Logout</button>
+                </div>'>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff">
+                <path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Z"/>
+            </svg>
+            <p class="mb-0 profile-name">Nikhil K K</p>
+        </div>
+    </div>
+
+    <div class="home-section" style="display: none;">
+        <nav id="sidebar">
+            <div class="sidebar-head">
+                <span class="logo-text">Scripts</span>
+                <button onclick=toggleSidebar() id="toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z"/></svg>
+                </button>
+            </div>
+            <div class="search-input d-flex" id="search-input">
+                <input type="text" name="search" id="searchInput" placeholder="Search..." oninput="searchMenu()">
+            </div>
+            <ul id="menuList">
+                <li class="active" data-search="master script main primary">
+                    <a href="#" onclick="showContent('master-Script')" data-target="master-Script">
+                        <span>Master Script</span>
+                    </a>
+                </li>
+                <li class="" data-search="make copy of spreadsheet copy sheet duplicate">
+                    <a href="#" onclick="showContent('make-Copy-of-Spreadsheet')" data-target="make-Copy-of-Spreadsheet">
+                        <span>Make Copy of Spreadsheet</span>
+                    </a>
+                </li>
+                <li class="" data-search="doer to doer peer to peer">
+                    <a href="#" onclick="showContent('doer-to-Doer')" data-target="doer-to-Doer">
+                        <span>Doer to Doer</span>
+                    </a>
+                </li>
+                <li class="" data-search="tiny url short link shorten url">
+                    <a href="#" onclick="showContent('tiny-Url')" data-target="tiny-Url">
+                        <span>Tiny Url</span>
+                    </a>
+                </li>
+                <li class="" data-search="sm doc template document template social media">
+                    <a href="#" onclick="showContent('sM-Doc-Template')" data-target="sM-Doc-Template">
+                        <span>SM Doc Template</span>
+                    </a>
+                </li>
+                <li class="" data-search="sm self assessment evaluation social media assessment">
+                    <a href="#" onclick="showContent('sM-Self-Assesment')" data-target="sM-Self-Assesment">
+                        <span>SM Self Assessment</span>
+                    </a>
+                </li>
+                <li class="" data-search="email script mail automation">
+                    <a href="#" onclick="showContent('email-Script')" data-target="email-Script">
+                        <span>Email Script</span>
+                    </a>
+                </li>
+                <li class="" data-search="sm doc template v2 version 2 social media document">
+                    <a href="#" onclick="showContent('sM-Doc-Template-V2')" data-target="sM-Doc-Template-V2">
+                        <span>SM Doc Template V2</span>
+                    </a>
+                </li>
+                <li class="" data-search="sm form ranger social media form range">
+                    <a href="#" onclick="showContent('sM-Form-Ranger')" data-target="sM-Form-Ranger">
+                        <span>SM Form Ranger</span>
+                    </a>
+                </li>
+                <li class="" data-search="sm edit url social media edit link">
+                    <a href="#" onclick="showContent('sM-Edit-Url')" data-target="sM-Edit-Url">
+                        <span>SM Edit Url</span>
+                    </a>
+                </li>
+                <li class="" data-search="csv data extract comma separated values data extraction">
+                    <a href="#" onclick="showContent('csv-Data-Exract')" data-target="csv-Data-Exract">
+                        <span>CSV Data Extract</span>
+                    </a>
+                </li>
+                <li class="" data-search="conditional importrange import range conditional data">
+                    <a href="#" onclick="showContent('conditional-Importrange')" data-target="conditional-Importrange">
+                        <span>Conditional Importrange</span>
+                    </a>
+                </li>
+                <li class="" data-search="universal auto fms file management system automatic">
+                    <a href="#" onclick="showContent('universal-Auto-FMS')" data-target="universal-Auto-FMS">
+                        <span>Universal Auto FMS</span>
+                    </a>
+                </li>
+                <li class="" data-search="master blaster whatsapp whatsapp bulk messaging">
+                    <a href="#" onclick="showContent('master-Blaster-Whatsapp')" data-target="master-Blaster-Whatsapp">
+                        <span>Master Blaster WhatsApp</span>
+                    </a>
+                </li>
+                <li class="" data-search="calendar app calendar application scheduling">
+                    <a href="#" onclick="showContent('calendar-App')" data-target="calendar-App">
+                        <span>Calendar App</span>
+                    </a>
+                </li>
+                <li class="" data-search="bulk mail mass email bulk messaging email marketing">
+                    <a href="#" onclick="showContent('bulk-Mail')" data-target="bulk-Mail">
+                        <span>Bulk Mail</span>
+                    </a>
+                </li>
+                <li class="" data-search="email to whatsapp email whatsapp integration">
+                    <a href="#" onclick="showContent('email-to-Whatsapp')" data-target="email-to-Whatsapp">
+                        <span>Email to WhatsApp</span>
+                    </a>
+                </li>
+                <li class="" data-search="encodeurl encode url encoding">
+                    <a href="#" onclick="showContent('encodeUrl')" data-target="encodeUrl">
+                        <span>EncodeUrl</span>
+                    </a>
+                </li>
+                <li class="" data-search="onedit script on edit trigger automation">
+                    <a href="#" onclick="showContent('onEdit-script')" data-target="onEdit-script">
+                        <span>onEdit Script</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="container sections-content" id="master-Script">
+                <div class="sections-head d-flex">
+                    <h1>Master Script</h1>
+                    <button class="btn btn-success text-center" id="copyBtn" onclick="copyToClipboard('masterScriptTextarea', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="masterScriptTextarea" readonly>
+// id : 1sPTPlrMYfIQcuOdVZHVc6a86sa-B6shzfNOZvZlPKn-CaB5aEN6x82CY
+function onOpen() {Master_Script_V2.onOpen()}function Create_Trigger_Ms() {Master_Script_V2.Create_Trigger_Ms()}function Delete_Trigger_Ms() {Master_Script_V2.Delete_Trigger_Ms()}function install_Importrange() {Master_Script_V2.install_Importrange()}function Import_Support(fromSheetd, fromRange, toSheetd, toRange) {Master_Script_V2.Import_Support(fromSheetd, fromRange, toSheetd, toRange);}function importRange() {Master_Script_V2.importRange();}function refresh_Importrange() {Master_Script_V2.refresh_Importrange()}function cre_tgr_I_range() {Master_Script_V2.cre_tgr_I_range()}function adv_Irange() {Master_Script_V2.adv_Irange();}function install_adv_Irange() {Master_Script_V2.install_adv_Irange()}function cre_tgr_adv_Irange() {Master_Script_V2.cre_tgr_adv_Irange()}function install_Workflow() {Master_Script_V2.install_Workflow();}function workflow() {Master_Script_V2.workflow();}function wf_attch_code(fileId) {Master_Script_V2.wf_attch_code(fileId) ();}function cre_tgr_workflow() {Master_Script_V2.cre_tgr_workflow()}function cre_tgr_protection() {Master_Script_V2.cre_tgr_protection();}function protection() {Master_Script_V2.protection();}function cre_tgr_mail() {Master_Script_V2.cre_tgr_mail()}function install_Email() {Master_Script_V2.install_Email();}function send_Mail() {Master_Script_V2.send_Mail();}function install_form_Ranger() {Master_Script_V2.install_form_Ranger();}function get_Item_of_Form() {Master_Script_V2.get_Item_of_Form()}function form_Ranger() {Master_Script_V2.form_Ranger();}function cre_tgr_form_Ranger() {Master_Script_V2.cre_tgr_form_Ranger();}function cre_tgr_doc_temp() {Master_Script_V2.cre_tgr_doc_temp()}function install_doc_temp() {Master_Script_V2.install_doc_temp()}function doc_template() {Master_Script_V2.doc_template()}function doc_template_attachment(fileId) {Master_Script_V2.doc_template_attachment(fileId)}function install_FMS_Archive() {Master_Script_V2.install_FMS_Archive();}function dme_working_hours() {Master_Script_V2.dme_working_hours()}function Doer_to_Doer() {Master_Script_V2.Doer_to_Doer()}function cre_tgr_FMS() {Master_Script_V2.cre_tgr_FMS();}function help_script() {Master_Script_V2.help_script()}function FMS_Archive() {Master_Script_V2.FMS_Archive()}function ins_csvSync(){Master_Script_V2.ins_csvSync()}function exe_csvSync(){Master_Script_V2.exe_csvSync()}function installSelfAssetsMent(){Master_Script_V2.installSelfAssetsMent()}function selfAssetsMentExecute(){Master_Script_V2.selfAssetsMentExecute()}function cre_tgr_selfAssessment(){Master_Script_V2.cre_tgr_selfAssessmentsss()}
+                    </textarea>
+                </div>
+            </div>
+            
+            <div class="container sections-content" id="make-Copy-of-Spreadsheet">
+                <div class="sections-head d-flex">
+                    <h1>Make Copy of Spreadsheet</h1>
+                    <button class="btn btn-success text-center" id="copyBtn" onclick="copyToClipboard('MakeCopyofSpreadsheetTextarea', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="MakeCopyofSpreadsheetTextarea" readonly>// id = 1LDmqKW6DSpoVVGMoYbMgaAVNR6zw4uCcXbiMTM4bs1kOo426I1VSkUTr
+function MakeCopyofSpreadSheet(){MakeCopyofScript.MakeCopyofSpreadSheet();}function MakeCopyAuto(){MakeCopyofScript.MakeCopyAuto();}function CreateTrigger() {MakeCopyofScript.CreateTrigger();}function DeleteTrigger() {MakeCopyofScript.DeleteTrigger();}function onOpen() {MakeCopyofScript.onOpen();}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="doer-to-Doer">
+                <div class="sections-head d-flex">
+                    <h1>Doer to Doer</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('DoertoDoer', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="DoertoDoer" readonly>
+// Code : 1PzqsEKrGuQ3-Eq9_XbCx6P5CFAjAyuTK-TxsQ3OxLCWpraHFCJm2ZY0D
+function onOpen(){SM_Doer_to_Doer.onOpen()}function InstallMaster(){SM_Doer_to_Doer.InstallMaster()}function Workflow(){  SM_Doer_to_Doer.Workflow()}function Template(){  SM_Doer_to_Doer.Template()}function RunManualWorkflow(){  SM_Doer_to_Doer.RunManualWorkflow()} function CreateTrigger(){  SM_Doer_to_Doer.CreateTrigger()}function Delete_Trigger(){SM_Doer_to_Doer.Delete_Trigger()}function get360Filebase(fileId){SM_Doer_to_Doer.get360Filebase(fileId)}function Cleardata (){SM_Doer_to_Doer.Cleardata()}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="tiny-Url">
+                <div class="sections-head d-flex">
+                    <h1>Tiny Url</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('TinyUrl', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="TinyUrl" readonly>
+            function GenerateTiny() {
+                var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Test");
+                var lr = 117
+                Logger.log(lr)
+                for (let i =2 ; i < lr;i++ ){
+                  var status = ss.getRange(i,3).getValue()
+                  if(status ==""){
+                     var link = ss.getRange(i,2).getValue();
+                     var tinylink = UrlFetchApp.fetch('http://tinyurl.com/api-create.php?url=' + link).getContentText(); 
+                     ss.getRange(i,3).setValue(tinylink);
+                     Logger.log(tinylink)
+                  }else{
+                    
+                  }
+                }
+              }
+              
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="sM-Doc-Template">
+                <div class="sections-head d-flex">
+                    <h1>SM Doc Template</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('SMDocTemplate', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="SMDocTemplate" readonly>
+//Libraries ID  :  1Sdfm3gBVgYVV8T7nixjlkzhiFrpRxTzmDTzxFsvcUNWMOBVnG90M9xiN
+    function onOpen() {SMTemplate.onOpen()} function RunSM_Doc_Formatting() {SMTemplate.RunSM_Doc_Formatting()}function GetBasefile64(fileId) {SMTemplate.GetBasefile64(fileId)}function Install_DocTempletAuto() {SMTemplate.Install_DocTempletAuto()}function Create_Trigger() {SMTemplate.Create_Trigger();}function Delete_Trigger() {SMTemplate.Delete_Trigger()}function SM_Tem_Reserve1() {SMTemplate.M_Tem_Reserve1()}function SM_Tem_Reserve2() {SMTemplate.SM_Tem_Reserve2()}function SM_Tem_Reserve3() {SMTemplate.SM_Tem_Reserve3()}function SM_Tem_Reserve4() {SMTemplate.SM_Tem_Reserve4()}function SM_Tem_Reserve5() {SMTemplate.SM_Tem_Reserve5()}function SM_Tem_Reserve6() {SMTemplate.SM_Tem_Reserve6()}function SM_Tem_Reserve7() {SMTemplate.SM_Tem_Reserve7()}function SM_Tem_Reserve8() {SMTemplate.M_Tem_Reserve8()}function SM_Tem_Reserve9() {SMTemplate.SM_Tem_Reserve9()}function SM_Tem_Reserve10(){SMTemplate.SM_Tem_Reserve10()}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="sM-Self-Assesment">
+                <div class="sections-head d-flex">
+                    <h1>SM Self Assesment</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('SMSelfAssesment', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="SMSelfAssesment" readonly>
+https://drive.google.com/open?id=1bW-0M0CTH3tFcgCHmftyUlzIozofPKNMW6rGV1L538M&usp=drive_copy
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="email-Script">
+                <div class="sections-head d-flex">
+                    <h1>Email Script</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('EmailScript', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="EmailScript" readonly>
+// ID : 1g4_ScVN16KIexOl3tbff72vhmEy3mXI1KBWjzVq8l3u-TnpGvSjUaWxP
+                function onOpen(){SM_Email_Script.onOpen();}function Create_trigger(){SM_Email_Script.Create_trigger()}function Delete_trigger(){SM_Email_Script.Delete_trigger()}function Install_EMAIL_app(){SM_Email_Script.Install_EMAIL_app()}function SM_Mail_Send(){SM_Email_Script.SM_Mail_Send()}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="sM-Doc-Template-V2">
+                <div class="sections-head d-flex">
+                    <h1>SM Doc Template V2</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('SMDocTemplateV2', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="SMDocTemplateV2" readonly>
+// Library ID : 10ppBHNp7c8OjHjayzSgl4mWwKGee-Wyo-qqkBBzCm7j1exkwghsm1oTv
+
+                function onOpen() {SMTemplate.onOpen();} function Create_Trigger() { SMTemplate.Create_Trigger();} function Delete_Trigger() {SMTemplate.Delete_Trigger();} function Install_DocTempletAuto(){SMTemplate.Install_DocTempletAuto()} function RunSM_Doc_Formatting() {SMTemplate.RunSM_Doc_Formatting()} function GetBasefile64(fileId) {SMTemplate.GetBasefile64(fileId)}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="sM-Form-Ranger">
+                <div class="sections-head d-flex">
+                    <h1>SM Form Ranger</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('SMFormRanger', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="SMFormRanger" readonly>
+// ID : 1R0Y7bfNfoW2WhVoJkKncxTgXmCykjMU0xpanm15Lxj9YwF2NQ-O5E1WR
+                function onOpen(){SM_Form_Ranger_APP.onOpen()}function Install_SM_Form_Ranger_app() {SM_Form_Ranger_APP.Install_SM_Form_Ranger_app()}function Get_Item_of_Form(){SM_Form_Ranger_APP.Get_Item_of_Form()}function Update_SM_Form_Ranger_App(){SM_Form_Ranger_APP.Update_SM_Form_Ranger_App()} function Create_Trigger_Ranger(){SM_Form_Ranger_APP.Create_Trigger_Ranger()}function Delete_Trigger_Ranger(){SM_Form_Ranger_APP.Delete_Trigger_Ranger()}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="sM-Edit-Url">
+                <div class="sections-head d-flex">
+                    <h1>SM Edit Url</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('SMEditUrl', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="SMEditUrl" readonly>
+// ID : 1AlNRBD3XGNIHCMxCh9H_lpKLcukGf2Gbg5z26piofQd1g6iGdKyRCb-m
+                function onOpen() {SM_Edit_URL_Generate.onOpen()} function Create_Trigger_Url() {SM_Edit_URL_Generate.Create_Trigger_Url()} function Delete_Trigger_Url() {SM_Edit_URL_Generate.Delete_Trigger_Url()} function Install_SM_Edit_Url() { SM_Edit_URL_Generate.Install_SM_Edit_Url()} function Run_Manual_Edit_Url() {SM_Edit_URL_Generate.Run_Manual_Edit_Url();};
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="csv-Data-Exract">
+                <div class="sections-head d-flex">
+                    <h1>CSV Data Exract</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('CSVDataExract', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="CSVDataExract" readonly>
+// Libraries Id : 1fWj8wysO2c-W7snqtR1w5fuixTLCELm6W90qxfAoybv6INkantEIm_d0;
+function onOpen() {CSVFileDecode.onOpen();}function CreateTrigger() {CSVFileDecode.CreateTrigger();}function DeleteTrigger() {CSVFileDecode.DeleteTrigger();}function install_CSV_Fetch() {CSVFileDecode.install_CSV_Fetch();}function csv_data_Exports() {CSVFileDecode.csv_data_Exports();}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="conditional-Importrange">
+                <div class="sections-head d-flex">
+                    <h1>Conditional Importrange</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('ConditionalImportrange', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="ConditionalImportrange" readonly>
+function onOpen(){
+                var Ui = SpreadsheetApp.getUi();
+                var menu  = Ui.createMenu("Conditional Importrange")
+                menu
+                .addItem('Install the SM Importrange','installtheconditionalImportrange')
+                .addSeparator()
+                .addItem('Run Manually','MasterImportraneg_Conditional')
+                .addToUi()
+                }
+                
+                
+                var ColumnMaster = "column[0],column[1],column[2]"
+                var FilterRowMaster = "row[0]>=1"
+                
+                
+                function installtheconditionalImportrange() {
+                  var SSSSS = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                
+                  if (SSSSS != null) {
+                    Browser.msgBox("Already Conditional Importrange installed in this Spreadsheet")
+                    SSSSS.getRange("A1").activate();
+                  } else {
+                    Browser.msgBox("Ready to Install")
+                    SpreadsheetApp.getActiveSpreadsheet().insertSheet("CONIMP")
+                    var tyt = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                    tyt.setHiddenGridlines(true);
+                    tyt.getRange("A1").setValue("From SP Link").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Spreadsheet link ")
+                
+                    tyt.getRange("B1").setValue("From Sheet Name").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Sheet Name ")
+                
+                    tyt.getRange("C1").setValue("Column Number").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Column Number to be move ")
+                
+                    tyt.getRange("D1").setValue("To SP Link").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Spreadsheet Link to get data ");
+                
+                    tyt.getRange("E1").setValue("To Sheet Name").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Sheet Name to Get the Data ");
+                
+                    tyt.getRange("F1").setValue("Paste Stating Row").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Starting Row to be Paste");
+                
+                    tyt.getRange("G1").setValue("Paste Stating Column").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Please Enter the Starting Column to be Paste");
+                
+                    tyt.getRange("H1").setValue("Clear & Paste").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("Clear & Paste Option Select");
+                
+                    tyt.getRange("A4:C4").setValue("Please Enter Your Conditions").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("please Enter the Condition Here ");
+                    tyt.getRange("A4:C4").mergeAcross();
+                    tyt.getRange("A4:C4").setHorizontalAlignment('center')
+                    tyt.getRange("A5:C5").mergeAcross();
+                    tyt.getRange("A5:C5").setHorizontalAlignment('center')
+                
+                    tyt.getRange("A5:C5").setFormula('=IF(A9="","","row["&A9-1&"]"&IF(OR(B9="contains",B9="Doesnot Contain"),SUBSTITUTE(IF(B9="Contains",K5,K6),"Text",C9),IFNA(VLOOKUP(B9,J1:K9,2,0),"")&IF(D9="","",IF(D9="Number",C9,""""&C9&"""")))&IF(A10="","",IF(E9="And","&&","||")&"row["&A10-1&"]"&IF(OR(B10="contains",B10="Doesnot Contain"),SUBSTITUTE(IF(B10="Contains",$K$5,$K$6),"Text",C10),IFNA(VLOOKUP(B10,$J$1:$K$9,2,0),"")&IF(D10="","",IF(D10="Number",C10,""""&C10&""""))))&IF(A11="","",IF(E10="And","&&","||")&"row["&A11-1&"]"&IF(OR(B11="contains",B11="Doesnot Contain"),SUBSTITUTE(IF(B11="Contains",$K$5,$K$6),"Text",C11),IFNA(VLOOKUP(B11,$J$1:$K$9,2,0),"")&IF(D11="","",IF(D11="Number",C11,""""&C11&""""))))&IF(A12="","",IF(E11="And","&&","||")&"row["&A12-1&"]"&IF(OR(B12="contains",B12="Doesnot Contain"),SUBSTITUTE(IF(B12="Contains",$K$5,$K$6),"Text",C12),IFNA(VLOOKUP(B12,$J$1:$K$9,2,0),"")&IF(D12="","",IF(D12="Number",C12,""""&C12&""""))))&IF(A13="","",IF(E12="And","&&","||")&"row["&A13-1&"]"&IF(OR(B13="contains",B13="Doesnot Contain"),SUBSTITUTE(IF(B13="Contains",$K$5,$K$6),"Text",C13),IFNA(VLOOKUP(B13,$J$1:$K$9,2,0),"")&IF(D13="","",IF(D13="Number",C13,""""&C13&"""")))))')
+                
+                    tyt.getRange("A8").setValue("Condition Column No.").setFontColor("white").setBackground("#25419c");
+                    tyt.getRange("B8").setValue("Function").setFontColor("white").setBackground("#25419c");
+                    tyt.getRange("C8").setValue("Particulars").setFontColor("white").setBackground("#25419c");
+                    tyt.getRange("D8").setValue("Colulmn Type").setFontColor("white").setBackground("#25419c");
+                    tyt.getRange("E8").setValue("Addition Type").setFontColor("white").setBackground("#25419c");
+                
+                    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                    spreadsheet.getRange('B9').activate();
+                    var currentCell = spreadsheet.getCurrentCell();
+                    spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+                    currentCell.activateAsCurrentCell();
+                    spreadsheet.getRange('J1:J7').activate();
+                    spreadsheet.getRange('B9:B13').setDataValidation(SpreadsheetApp.newDataValidation()
+                      .setAllowInvalid(false)
+                      .requireValueInRange(spreadsheet.getRange('$J$1:$J$7'), true)
+                      .build());
+                    if (1 === 1) {
+                      var spreadsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP");
+                      spreadsheet.getRange('D9').activate();
+                      var currentCell = spreadsheet.getCurrentCell();
+                      spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+                      currentCell.activateAsCurrentCell();
+                      currentCell = spreadsheet.getCurrentCell();
+                      spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+                      currentCell.activateAsCurrentCell();
+                      spreadsheet.getRange('D9:D13').setDataValidation(SpreadsheetApp.newDataValidation()
+                        .setAllowInvalid(false)
+                        .requireValueInList(['Text', 'Number'], true)
+                        .build());
+                    }
+                
+                    if (1 === 1) {
+                      var spreadsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP");
+                      spreadsheet.getRange('E9').activate();
+                      var currentCell = spreadsheet.getCurrentCell();
+                      spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+                      currentCell.activateAsCurrentCell();
+                      spreadsheet.getRange('J8:J10').activate();
+                      spreadsheet.getRange('E9:E12').setDataValidation(SpreadsheetApp.newDataValidation()
+                        .setAllowInvalid(false)
+                        .requireValueInRange(spreadsheet.getRange('$J$8:$J$10'), true)
+                        .build());
+                    }
+                
+                    if (1 === 1) {
+                      var spreadsheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP");
+                      spreadsheet.getRange('H2').activate();
+                      spreadsheet.getRange('H2').setDataValidation(SpreadsheetApp.newDataValidation()
+                        .setAllowInvalid(false)
+                        .requireValueInList(['Normal Importrange', 'Clear and Paste', 'Paste from Last row'], true)
+                        .build());
+                    }
+                
+                    tyt.getRange("E5:G5").setFormula('=ArrayFormula(Iferror("[column["&join("],column[",SPLIT(C2,",")-1)&"]]"))')
+                
+                    tyt.getRange("A4:C5").setBorder(true, true, true, true, true, true)
+                
+                    var spreadsheet = SpreadsheetApp.getActive();
+                    spreadsheet.getRange('F5').activate();
+                    spreadsheet.getActiveSheet().setRowHeight(5, 73);
+                
+                
+                    var NormalData = [["Is equal to", "'==="], ["Is not equal to", "!="], ["Greater than eaqual to", ">="], ["Less than equal to", "<="], ["Contains", ".toString().toLowerCase().indexOf(" + '"' + "Text" + '"' + ".toString().toLowerCase()) >=0"], ["Doesnot Contain", ".toString().toLowerCase().indexOf(" + '"' + "Text" + '"' + ".toString().toLowerCase()) === - 1"], ["", ""], ["And", "&&"], ["Or", "||"]]
+                
+                    tyt.getRange("J1:K9").setValues(NormalData).setFontColor("red").setFontWeight('bold').setFontSize(10).setBorder(true, true, true, true, true, true)
+                
+                    tyt.getRange("J11").setValue("ColumnMaster")
+                    tyt.getRange("J12").setValue("FilterRowMaster")
+                
+                    tyt.getRange("E4:G4").setValue("Get Your Column Code").setBackground("#CC0000").setFontColor("#ffffff").setFontSize(10).setBorder(true, null, true, null, false, false).setNote("please Enter in the Script ");
+                    tyt.getRange("E4:G4").mergeAcross();
+                    tyt.getRange("E4:G4").setHorizontalAlignment('center')
+                    tyt.getRange("E5:G5").mergeAcross();
+                    tyt.getRange("E5:G5").setHorizontalAlignment('center').setBorder(true, true, true, true, true, true)
+                
+                
+                
+                    //tyt.autoResizeColumns(1,11)
+                
+                    tyt.deleteColumns(12, 15);
+                    tyt.deleteRows(14, 987);
+                
+                  }//Else Close
+                }
+                
+                function MasterImportraneg_Conditional() {
+                
+                  var MSS = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                
+                if(MSS==null){
+                        Browser.msgBox(" Please Install the Conditional Importrange , than run it ")
+                }else{
+                
+                  var URLlink = MSS.getRange("H2").getValue();
+                
+                  if (URLlink === "Normal Importrange") {
+                
+                    var MSS = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                    if (MSS === null) {
+                      Browser.msgBox(" Please Install the Conditional Importrange , than run it ")
+                    } else {
+                      var URLlink = MSS.getRange("A2").getValue();
+                      var URLSheet = MSS.getRange("B2").getValue();
+                      var TOURLSheetlink = MSS.getRange("D2").getValue();
+                      var TOURLSheet = MSS.getRange("E2").getValue();
+                      var TOURLSheetstartrow = MSS.getRange("F2").getValue();
+                      var TOURLSheetstartCol = MSS.getRange("G2").getValue()
+                
+                      var Masterruin = SpreadsheetApp.openByUrl(URLlink).getSheetByName(URLSheet);
+                      var Masterruinlr = Masterruin.getLastRow();
+                      var Masterruinlc = Masterruin.getLastColumn();
+                
+                      var Masterruindata = Masterruin.getRange(1, 1, Masterruinlr, Masterruinlc).getValues();
+                
+                      var mydata = Masterruindata.filter(function (row) {
+                        return FilterRowMaster;
+                      })
+                     
+                
+                      var Masterruinmapping = mydata.map(function (column) {
+                        return ColumnMaster;
+                      })
+                      
+                Logger.log(Masterruinmapping)
+                      SpreadsheetApp.openByUrl(TOURLSheetlink).getSheetByName(TOURLSheet).getRange(TOURLSheetstartrow, TOURLSheetstartCol, Masterruinmapping.length, Masterruinmapping[0].length).setValues(Masterruinmapping);
+                    }// ELSE CLOSE
+                  }
+                  else {
+                    if (URLlink === "Clear and Paste") {
+                
+                      var MSS = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                      if (MSS == null) {
+                        Browser.msgBox(" Please Install the Conditional Importrange , than run it ")
+                      } else {
+                        var URLlink = MSS.getRange("A2").getValue();
+                        var URLSheet = MSS.getRange("B2").getValue();
+                        var TOURLSheetlink = MSS.getRange("D2").getValue();
+                        var TOURLSheet = MSS.getRange("E2").getValue();
+                        var TOURLSheetstartrow = MSS.getRange("F2").getValue();
+                        var TOURLSheetstartCol = MSS.getRange("G2").getValue()
+                
+                        var Masterruin = SpreadsheetApp.openByUrl(URLlink).getSheetByName(URLSheet);
+                        var Masterruinlr = Masterruin.getLastRow();
+                        var Masterruinlc = Masterruin.getLastColumn();
+                
+                        var Masterruindata = Masterruin.getRange(1, 1, Masterruinlr, Masterruinlc).getValues();
+                
+                        var mydata = Masterruindata.filter(function (row) {
+                          return FilterRowMaster;
+                        })
+                
+                
+                        var Masterruinmapping = mydata.map(function (column) {
+                          return ColumnMaster;
+                        })
+                
+                        var Opnedsheet = SpreadsheetApp.openByUrl(TOURLSheetlink).getSheetByName(TOURLSheet);
+                        Opnedsheet.getRange(TOURLSheetstartrow, TOURLSheetstartCol, Opnedsheet.getLastRow(), Opnedsheet.getLastColumn()).clearContent();
+                
+                        SpreadsheetApp.openByUrl(TOURLSheetlink).getSheetByName(TOURLSheet).getRange(TOURLSheetstartrow, TOURLSheetstartCol, Masterruinmapping.length, Masterruinmapping[0].length).setValues(Masterruinmapping);
+                      }// ELSE CLOSE
+                    }
+                
+                    // This else is defined automated the last row for the Same 
+                
+                    else {
+                      var MSS = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("CONIMP")
+                      if (MSS == null) {
+                        Browser.msgBox(" Please Install the Conditional Importrange , than run it ")
+                      } else {
+                        var URLlink = MSS.getRange("A2").getValue();
+                        var URLSheet = MSS.getRange("B2").getValue();
+                        var TOURLSheetlink = MSS.getRange("D2").getValue();
+                        var TOURLSheet = MSS.getRange("E2").getValue();
+                        var TOURLSheetstartrow = MSS.getRange("F2").getValue();
+                        var TOURLSheetstartCol = MSS.getRange("G2").getValue()
+                
+                        var Masterruin = SpreadsheetApp.openByUrl(URLlink).getSheetByName(URLSheet);
+                        var Masterruinlr = Masterruin.getLastRow();
+                        var Masterruinlc = Masterruin.getLastColumn();
+                
+                        var Masterruindata = Masterruin.getRange(1, 1, Masterruinlr, Masterruinlc).getValues();
+                
+                        var mydata = Masterruindata.filter(function (row) {
+                          return FilterRowMaster;
+                        })
+                        var Masterruinmapping = mydata.map(function (column) {
+                          return ColumnMaster;
+                        })
+                
+                        var Opnedsheet = SpreadsheetApp.openByUrl(TOURLSheetlink).getSheetByName(TOURLSheet);
+                        SpreadsheetApp.openByUrl(TOURLSheetlink).getSheetByName(TOURLSheet).getRange(Opnedsheet.getLastRow() + 1, TOURLSheetstartCol, Masterruinmapping.length, Masterruinmapping[0].length).setValues(Masterruinmapping);
+                      }// ELSE CLOSE
+                    }
+                  }
+                }}
+                
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="universal-Auto-FMS">
+                <div class="sections-head d-flex">
+                    <h1>Universal Auto FMS</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('UniversalAutoFMS', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="UniversalAutoFMS" readonly>
+https://docs.google.com/spreadsheets/d/1KLWyyUer55ERgG-g3SnxJe0mLHyORv5zMkpQGRe5huc/edit
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="master-Blaster-Whatsapp">
+                <div class="sections-head d-flex">
+                    <h1>Master Blaster Whatsapp</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('MasterBlasterWhatsapp', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="MasterBlasterWhatsapp" readonly>
+// Library Code : 1cRJmWFLb9_1LL5BYhLLRrpUZ7oGHJc4-44WolVe5Nb8AQXpSM9ifuo1S
+                function InstallMaster() {SMMasterBlaster.InstallMaster();}function AutomationofWorkflow(){SMMasterBlaster.AutomationofWorkflow();}function AutodeleteTrigger(){SMMasterBlaster.AutodeleteTrigger();}function onOpen(){SMMasterBlaster.onOpen()};function ManualDeletetrigger(){SMMasterBlaster.ManualDeletetrigger();}function RunManualWorkflow (){SMMasterBlaster.RunManualWorkflow ();}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="calendar-App">
+                <div class="sections-head d-flex">
+                    <h1>Calendar App</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('CalendarApp', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="CalendarApp" readonly>
+// id = 1w4e4CYkKTMkNw65NgOQz1kSz070mrBBHDHKBzevrHTvaxFgk5_f291eL
+                function onOpen(){SMCalendarApp.onOpen();}function UpdateTasks(){SMCalendarApp.UpdateTasks();}function CalendarAppItrater(){SMCalendarApp.CalendarAppItrater();}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="bulk-Mail">
+                <div class="sections-head d-flex">
+                    <h1>Bulk Mail</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('BulkMail', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="BulkMail" readonly>
+//  Code : 1Hcnw9Y6IlIhi2oyaONyqd7R7wTelN4a8nFbWk2TonxxN2caGwmqtOXrD
+                function onOpen(){EmailTemplate.onOpen();}function CheckCurrentQuota(){EmailTemplate.CheckCurrentQuota();}function Create_Trigger(){EmailTemplate.Create_Trigger();}function Delete_Trigger(){EmailTemplate.Delete_Trigger();}function Sendmail(){EmailTemplate.Sendmail();}
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="email-to-Whatsapp">
+                <div class="sections-head d-flex">
+                    <h1>Email to Whatsapp</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('EmailtoWhatsapp', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="EmailtoWhatsapp" readonly>
+https://docs.google.com/spreadsheets/d/15otycrRJN9plgtKimIHYTaqvzHtdQWq5BrnPNGS-Kak/edit#gid=491039925      
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="encodeUrl">
+                <div class="sections-head d-flex">
+                    <h1>Encode Url</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('EncodeUrl', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="EncodeUrl" readonly>
+function encodeHTML(str) {
+  return str.replace(/&/g, '&')
+            .replace(//g, '>')
+            .replace(/"/g, '"')
+            .replace(/'/g, ''');
+}      
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="sections-content" id="onEdit-script">
+                <div class="sections-head d-flex">
+                    <h1>OnEdit Script</h1>
+                    <button class="btn btn-success text-center" onclick="copyToClipboard('OnEditScript', this)">Copy</button>
+                </div>
+                <div class="textarea">
+                    <textarea name="textarea" id="OnEditScript" readonly>
+function onEdit(e) {
+  var range = e.range;
+  var sheet = range.getSheet();
+  if(sheet.getName()=="Sheet1" || sheet.getName()=="Sheet1" ){
+    SpreadsheetApp.getActiveSpreadsheet().getSheetByName('imp').getRange('B1').setValue(new Date())
+  }
+}
+
+// var range = e.range;
+//   var sheet = range.getSheet();
+//   var editedCell = range.getA1Notation();
+//   var editedValue = e.value;
+//   console.log("Edited cell: " + editedCell);
+//   console.log("New value: " + editedValue);
+//   console.log("Sheet name: " + sheet.getName());
+           
+                    </textarea>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="container-fluid p-0 ">
+        <div class="row g-0 login-container">
+            <div class="text-content pb-3 d-flex align-items-center">
+                <img src="logo-2.png" alt="">
+                <div class="text p-2 pt-5">
+                    <h2>Maruti Flex Traders LLP</h2>
+                    <p>Let's Grow Business Together</p>
+                </div>
+            </div>
+            <div class="login-section">
+                <div class="login-card">
+                    <div class="card-header-custom">
+                        <h2 class="mb-2">
+                            <i class="bi bi-person-circle me-2 text-white"></i>
+                            Welcome
+                        </h2>
+                        <p class="text-muted">Enter Login Details</p>
+                    </div>
+                    <div class="card-body px-4 pb-4">
+                        <form id="loginForm">
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" id="employeeId" placeholder="Employee ID" required>
+                                <label for="employeeId">
+                                    <i class="bi bi-person-badge me-2"></i>Employee ID
+                                </label>
+                            </div>
+                            
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                <label for="password">
+                                    <i class="bi bi-lock me-2"></i>Password
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid gap-2 mb-3">
+                                <button type="submit" class="btn btn-primary btn-login">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                                    Login
+                                </button>
+                            </div>
+                            
+                            <div class="options text-center mb-3">
+                                <a href="#" class="forgot-password" id="signupLink">
+                                    Sign Up
+                                </a>
+                                <a href="#" class="forgot-password" id="forgotPassword">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
