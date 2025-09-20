@@ -290,8 +290,13 @@ label {
     list-style: none;
     padding-left: 0;
 }
-#sidebar ul li{
-    background: #414353;
+
+#sidebar ul li .active{
+    background: #27272e;
+}
+
+#sidebar ul li:hover{
+    background: #575a70;
 }
 
 #sidebar .search-input button {

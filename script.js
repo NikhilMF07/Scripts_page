@@ -177,19 +177,24 @@ function copyToClipboard(textareaId, buttonElement) {
         alert("Textarea not found!");
         return;
     }
-
+    textarea.select();
+    textarea.setSelectionRange(0, textarea.value.length);
     navigator.clipboard.writeText(textarea.value)
-        .then(() => {
-            const originalText = buttonElement.innerText;
-            buttonElement.innerText = "Copied";
-            buttonElement.disabled = true;
-            setTimeout(() => {
-                buttonElement.innerText = originalText;
-                buttonElement.disabled = false;
-            }, 2000);
-        })
-        .catch(err => {
-            console.error('Copy failed:', err);
-            alert('Failed to copy.');
-        });
+    .then(() => {
+        const originalText = buttonElement.innerText;
+        buttonElement.innerText = "Copied";
+        buttonElement.disabled = true;
+        setTimeout(() => {
+            if (window.getSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            textarea.blur();
+            buttonElement.innerText = originalText;
+            buttonElement.disabled = false;
+        }, 3000);
+    })
+    .catch(err => {
+        console.error('Copy failed:', err);
+        alert('Failed to copy.');
+    });
 }
